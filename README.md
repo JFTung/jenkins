@@ -1,2 +1,15 @@
-# jenkins
-Jenkins on Docker
+# Jenkins on Docker
+
+https://code-maze.com/ci-jenkins-docker/
+https://github.com/CodeMazeBlog/docker-series/tree/docker-series-continuous-integration-jenkins-end
+
+```
+cd host
+docker build -t jenkins-host .
+cd worker
+docker build -t jenkins-worker .
+cd ..
+docker-compose up
+```
+
+
