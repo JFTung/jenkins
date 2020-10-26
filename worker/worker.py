@@ -1,3 +1,5 @@
+# NOTE: Only necessary if using Jenkins workers/nodes/agents
+
 import jenkins
 import os
 import signal
@@ -67,24 +69,24 @@ while not host_ready(worker_jar_url):
     time.sleep(10)
 
 worker_download(worker_jar)
-print 'Downloaded Jenkins worker jar.'
+print('Downloaded Jenkins worker jar.')
 
 if os.environ['WORKER_WORKING_DIR']:
     os.setcwd(os.environ['WORKER_WORKING_DIR'])
 
 if os.environ['CLEAN_WORKING_DIR'] == 'true':
     clean_dir(os.getcwd())
-    print "Cleaned up working directory."
+    print("Cleaned up working directory.")
 
 if os.environ['WORKER_NAME'] == '':
     worker_create(worker_name, os.getcwd(), os.environ['WORKER_EXECUTORS'], os.environ['WORKER_LABELS'])
-    print 'Created temporary Jenkins worker.'
+    print('Created temporary Jenkins worker.')
 
 process = worker_run(worker_jar, jnlp_url)
-print 'Started Jenkins worker with name "' + worker_name + '" and labels [' + os.environ['WORKER_LABELS'] + '].'
+print('Started Jenkins worker with name "' + worker_name + '" and labels [' + os.environ['WORKER_LABELS'] + '].')
 process.wait()
 
-print 'Jenkins worker stopped.'
+print('Jenkins worker stopped.')
 if os.environ['WORKER_NAME'] == '':
     worker_delete(worker_name)
-    print 'Removed temporary Jenkins worker.'
+    print('Removed temporary Jenkins worker.')

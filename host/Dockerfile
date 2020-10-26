@@ -2,7 +2,8 @@
 FROM jenkins/jenkins
 
 # Installing the plugins we need using the in-built install-plugins.sh script
-RUN /usr/local/bin/install-plugins.sh git matrix-auth workflow-aggregator docker-workflow blueocean credentials-binding
+#RUN /usr/local/bin/install-plugins.sh git matrix-auth workflow-aggregator docker-workflow blueocean credentials-binding
+RUN jenkins-plugin-cli git matrix-auth workflow-aggregator docker-workflow blueocean credentials-binding
 
 # Setting up environment variables for Jenkins admin user
 ENV JENKINS_USER admin
@@ -15,4 +16,4 @@ ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 #COPY executors.groovy /usr/share/jenkins/ref/init.groovy.d/
 #COPY default-user.groovy /usr/share/jenkins/ref/init.groovy.d/
 
-VOLUME /var/jenkins_home
+VOLUME test:/var/jenkins_home

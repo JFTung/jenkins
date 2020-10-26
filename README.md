@@ -6,10 +6,18 @@ https://github.com/CodeMazeBlog/docker-series/tree/docker-series-continuous-inte
 ```
 cd host
 docker build -t jenkins-host .
+cd ..
+```
+
+Only if using Jenkins workers/nodes/agents:
+```
 cd worker
 docker build -t jenkins-worker .
 cd ..
-docker-compose up
 ```
 
-
+```
+docker-compose up
+http://localhost:8080
+docker-compose down
+```
