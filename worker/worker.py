@@ -65,7 +65,7 @@ def host_ready(url):
         return False
 
 while not host_ready(worker_jar_url):
-    print("Host not ready yet, sleeping for 10sec!")
+    print('Host not ready yet, sleeping for 10sec!')
     time.sleep(10)
 
 worker_download(worker_jar)
@@ -76,7 +76,7 @@ if os.environ['WORKER_WORKING_DIR']:
 
 if os.environ['CLEAN_WORKING_DIR'] == 'true':
     clean_dir(os.getcwd())
-    print("Cleaned up working directory.")
+    print('Cleaned up working directory.')
 
 if os.environ['WORKER_NAME'] == '':
     worker_create(worker_name, os.getcwd(), os.environ['WORKER_EXECUTORS'], os.environ['WORKER_LABELS'])
