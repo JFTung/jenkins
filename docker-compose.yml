@@ -1,0 +1,21 @@
+version: "3"
+services:
+    jenkins-host:
+        container_name: jenkins-host
+        image: jenkins-host
+        volumes:
+            - ./jenkins_home:/var/jenkins_home
+        ports:
+            - "9090:8080"
+            - "50000:50000"
+#    jenkins-worker:
+#        container_name: jenkins-worker
+#        restart: always
+#        environment:
+#            - "JENKINS_URL=http://jenkins:9090"
+#        image: jenkins-worker
+#        volumes:
+#            - /var/run/docker.sock:/var/run/docker.sock  # Expose the docker daemon in the container
+#            - /home/jenkins:/home/jenkins # Avoid mysql volume mount issue
+#        depends_on:
+#            - jenkins-host
