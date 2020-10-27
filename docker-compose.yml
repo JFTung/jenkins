@@ -1,18 +1,20 @@
-version: '3.1'
+version: '3'
 services:
     jenkins-host:
         container_name: jenkins-host
-        ports:
-            - '8082:8080'
-            - '50000:50000'
         image: jenkins-host
+        stdin_open: true # docker run -i
+        tty: true        # docker run -t
         volumes:
-            - test:/var/jenkins_home
+            - ./jenkins_home:/var/jenkins_home
+        ports:
+            - '9090:8080'
+            - '50000:50000'
 #    jenkins-worker:
 #        container_name: jenkins-worker
 #        restart: always
 #        environment:
-#            - 'JENKINS_URL=http://jenkins:8080'
+#            - 'JENKINS_URL=http://jenkins:9090'
 #        image: jenkins-worker
 #        volumes:
 #            - /var/run/docker.sock:/var/run/docker.sock  # Expose the docker daemon in the container
