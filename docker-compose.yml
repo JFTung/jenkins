@@ -3,6 +3,7 @@ services:
     jenkins-host:
         container_name: jenkins-host
         image: jenkins-host
+        restart: unless-stopped
         volumes:
             - ./jenkins_home:/var/jenkins_home
         ports:
